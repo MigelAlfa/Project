@@ -1,0 +1,39 @@
+name: wordpress
+mount: /var/www/html
+repository: migelalfa/wp:latest
+
+replicaCount: 2
+
+pv:
+  storage: 8Gi
+  nfs:
+    path: /mnt/IT-Academy/nfs-data/sa2-21-22/shahov/wordpress
+    server: 192.168.37.105
+pvc:
+  storage: 8Gi
+
+resources:
+  limits:
+    cpu: 2000m
+    memory: 2000Mi
+  requests:
+    cpu: 1000m
+    memory: 1000Mi
+
+env:
+  - name: WORDPRESS_DB_HOST
+    value: 192.168.202.32
+  - name: WORDPRESS_DB_NAME
+    value: wordpress
+  - name: WORDPRESS_DB_USER
+    value: wordpress
+  - name: WORDPRESS_DB_PASSWORD
+    value: wordpress
+
+
+ingress:
+  enabled: enabled
+ing_alias: "project-helm.k8s-32.sa"
+ing_host: project-helm.k8s-31.sa
+ing_port: 80
+

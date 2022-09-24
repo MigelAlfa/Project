@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  labels:
+    app: {{ .Values.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+        tier: frontend
+    spec:
+      containers:
+      - image: {{ .Values.repository }}
+        name: {{ .Values.name }}
+        env:
+          {{- with  .Values.env }}
+          {{- . | toYaml | nindent 10 -}}
+          {{- end }}
+
+        ports:
+        - containerPort: 80
+          name: wordpress
+
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: {{ .Values.mount }}
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: "{{ include "my-project.fullname" . }}-pvc"

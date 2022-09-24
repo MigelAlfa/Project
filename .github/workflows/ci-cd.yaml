@@ -1,0 +1,50 @@
+name: push
+
+on:
+  push:
+    branches:
+    - "main"
+
+jobs:
+  build-container:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+   
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./doc
+          push: true
+          tags: migelalfa/wordpress
+
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Helm tool installer
+        uses: Azure/setup-helm@v3
+
+      - name: Test my-project
+        continue-on-error: true
+        uses: instrumenta/kubeval-action@master
+        with: 
+         files: ./my-project/templates
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+         SLACK_CHANNEL: migelalfa-it
+         SLACK_COLOR: ${{ job.status }}
+         SLACK_ICON: https://img.icons8.com/nolan/344/github.png
+         SLACK_MESSAGE: 'my-project test done'
+         SLACK_TITLE: 'job is done!!!'
+         SLACK_USERNAME: kubeval
+         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
