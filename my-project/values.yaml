@@ -1,6 +1,6 @@
 name: wordpress
 mount: /var/www/html
-repository: migelalfa/wp:latest
+repository: migelalfa/wordpress:latest
 
 replicaCount: 2
 

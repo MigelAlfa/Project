@@ -44,7 +44,7 @@ jobs:
          SLACK_CHANNEL: migelalfa-it
          SLACK_COLOR: ${{ job.status }}
          SLACK_ICON: https://img.icons8.com/nolan/344/github.png
-         SLACK_MESSAGE: 'my-project test done'
-         SLACK_TITLE: 'job is done!!!'
+         SLACK_MESSAGE: 'my-project successfully updated'
+         SLACK_TITLE: 'job is done!'
          SLACK_USERNAME: kubeval
          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
