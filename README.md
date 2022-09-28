@@ -12,7 +12,7 @@
 
 ### DB: MariaDB ###
 
-### Link on git repository:  https://github.com/docker-library/wordpress ###
+### Link app repository: https://wordpress.org/download/releases/ ###
 
 ### My Docker repository: https://hub.docker.com/repository/docker/migelalfa/wordpress ###
 
@@ -37,7 +37,7 @@ Other tools: Docker, PHPmyadmin, Ansible
 
 # CI/CD description: #
 
-The developer runs a script that prompts him to specify the application version and a comment for the git repository, github actions doing tests, packaging in docker and send notification in slack if the whole process was successful. Argo CD takes and deploys our application in K8s.
+The developer push  for the git repository, github actions doing tests, packs the project and assigns a version, packaging in docker and send notification in slack if the whole process was successful. Argo CD takes and deploys our application in K8s.
 
 Updates follow the same principle.
 

@@ -8,10 +8,19 @@ on:
 jobs:
   build-container:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+        with:
+         fetch-depth: '0'
+      - name: Bump version
+        id: bump-version
+        uses: anothrNick/github-tag-action@1.40.0
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         WITH_V: true
+         DEFAULT_BUMP: minor
       
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
@@ -38,13 +47,26 @@ jobs:
         with: 
          files: ./my-project/templates
 
+
+      - uses: actions/checkout@v2
+      - name: Publish Helm charts
+        uses: stefanprodan/helm-gh-pages@master
+        with:
+          charts_dir: .
+          branch: main
+          linting: off
+          charts_url: https://migelalfa.github.io/Project/
+          token: ${{ secrets.GITHUB_TOKEN }}
+          app_version: ${{ steps.bump-version.outputs.tag }}
+          chart_version: ${{ steps.bump-version.outputs.tag }}
+
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
          SLACK_CHANNEL: migelalfa-it
          SLACK_COLOR: ${{ job.status }}
          SLACK_ICON: https://img.icons8.com/nolan/344/github.png
-         SLACK_MESSAGE: 'my-project successfully updated'
+         SLACK_MESSAGE: 'Project successfully updated'
          SLACK_TITLE: 'job is done!'
          SLACK_USERNAME: kubeval
          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
