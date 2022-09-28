@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   my-project:
   - apiVersion: v2
+    appVersion: v0.3.0
+    created: "2022-09-28T17:21:40.410411089Z"
+    description: A Helm chart for Kubernetes
+    digest: 692e71641e765e193ccba8ba2998d5d651523516aa9615be8384b5a0fdcf5023
+    name: my-project
+    type: application
+    urls:
+    - https://migelalfa.github.io/Project/my-project-v0.3.0.tgz
+    version: v0.3.0
+  - apiVersion: v2
     appVersion: v0.2.0
     created: "2022-09-28T16:59:55.308341897Z"
     description: A Helm chart for Kubernetes
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://migelalfa.github.io/Project/my-project-v0.1.0.tgz
     version: v0.1.0
-generated: "2022-09-28T16:59:55.307036Z"
+generated: "2022-09-28T17:21:40.408676866Z"
