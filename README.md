@@ -28,16 +28,16 @@ Orchestration: K8s
 
 Version control system: Git
 
-Automation: Github action, Argo CD
+Automation: Github actions, Argo CD
 
-Notification: Slach, Gmail
+Notification: Slack, Gmail
 
 Other tools: Docker, PHPmyadmin, Ansible
 
 
 # CI/CD description: #
 
-The developer push  for the git repository, github actions doing tests, packs the project and assigns a version, packaging in docker and send notification in slack if the whole process was successful. Argo CD takes and deploys our application in K8s.
+The developer push commit into  git repository, github actions doing tests, packs the project and assigns a version, packaging in docker and send notification in slack if the whole process was successful. Argo CD takes and deploys our application in K8s.
 
 Updates follow the same principle.
 
