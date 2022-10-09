@@ -122,8 +122,8 @@ RUN set -eux; \
 	find /etc/apache2 -type f -name '*.conf' -exec sed -ri 's/([[:space:]]*LogFormat[[:space:]]+"[^"]*)%h([^"]*")/\1%a\2/g' '{}' +
 
 RUN set -eux; \
-    #version='5.9.3'; \
-	#sha1='cab576e112c45806c474b3cbe0d1263a2a879adf'; \
+    version='5.9.3'; \
+	sha1='cab576e112c45806c474b3cbe0d1263a2a879adf'; \
 	#version='6.0.2'; \
 	#sha1='9348f0757c21504d085a6c866ccbb86573b39d6f'; \
 	#version='6.0.1'; \
@@ -167,7 +167,7 @@ VOLUME /var/www/html
 
 COPY --chown=www-data:www-data wp-config-docker.php /usr/src/wordpress/
 COPY docker-entrypoint.sh /usr/local/bin/
-COPY --chown=www-data:www-data themesUSER/ /usr/src/wordpress/wp-content/themes
+COPY --chown=www-data:www-data themesUSER/ /usr/src/wordpress/wp-content/themes/themesUSER/
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
