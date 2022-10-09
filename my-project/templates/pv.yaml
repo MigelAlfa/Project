@@ -11,6 +11,6 @@ spec:
     storage: {{ .Values.pv.storage }}
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Recycle
   nfs:
     {{- toYaml .Values.pv.nfs | nindent 4 }}
