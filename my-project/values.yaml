@@ -3,6 +3,7 @@ mount: /var/www/html/wp-content/
 #repository: wordpress:5.9.3-php8.1-apache
 #repository: wordpress:6.0.1-php8.1-apache
 repository: wordpress:6.0.2-php8.1-apache
+#repository: migelalfa/wordpress:v0.8.0
 
 
 

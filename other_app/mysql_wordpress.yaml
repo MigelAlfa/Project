@@ -7,7 +7,7 @@
       - python3-pymysql
       - python3-mysqldb
     db_users:
-      - { db: zabbix,  user: zabbix, pass: zabbix }
+      #- { db: zabbix,  user: zabbix, pass: zabbix }
       - { db: wordpress,  user: wordpress, pass: wordpress }
         #db_name: "zabbix"
         #db_user: "zabbix"

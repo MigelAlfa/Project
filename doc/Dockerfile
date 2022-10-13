@@ -167,7 +167,7 @@ VOLUME /var/www/html
 
 COPY --chown=www-data:www-data wp-config-docker.php /usr/src/wordpress/
 COPY docker-entrypoint.sh /usr/local/bin/
-COPY --chown=www-data:www-data themesUSER/ /usr/src/wordpress/wp-content/themes/themesUSER/
+#COPY --chown=www-data:www-data themesUSER/ /usr/src/wordpress/wp-content/themes/themesUSER/
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
