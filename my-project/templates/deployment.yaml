@@ -6,9 +6,9 @@ metadata:
   labels:
     app: {{ .Values.name }}
 spec:
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-    replicaCount: {{ .Values.replicaCount }}
       app: {{ .Values.name }}
       tier: frontend
   strategy:
