@@ -8,6 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
+    replicaCount: {{ .Values.replicaCount }}
       app: {{ .Values.name }}
       tier: frontend
   strategy:
